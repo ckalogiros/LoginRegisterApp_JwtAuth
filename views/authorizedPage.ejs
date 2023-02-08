@@ -1,0 +1,11 @@
+<title>Authorized Page</title>
+<div class="margt-140">
+    <div class="col-md-7 m-auto panel-green">
+        <h1 class="text-center m-5">AUTHORIZED PAGE</h1>
+        <% if (locals.username) { %>
+            <h3 class="text-center m-5">Welcome user <%- '\"' + locals.username + '\"' %></h3>
+        <% } else { %>
+            <h3 class="text-center m-5">ERROR displaying user</h3>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+
+/* Reset margins */
+html, header, body, footer, 
+h1, h2, h3, h4, h5,
+ul, li, a, p,
+input, label, button, div,
+figure, picture{
+    margin:0;
+    padding: 0;
+}
+
+html{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+a, a:hover, a:focus, a:active {
+    /* color: hsl(var(--clr-text-white));  */
+    text-decoration: none ;
+    cursor:pointer;  
+}
+
+ul { list-style-type: none; }
+
+
+.no-wrap{
+    text-overflow:clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/* Set up images */
+img, picture{
+    max-width: 100%;
+    display:block;
+}
+
+/* Set up form elements */
+input, button, textarea, select{
+    font:inherit;
+}
+

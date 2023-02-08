@@ -1,0 +1,18 @@
+<menu class="panel">
+    <nav>
+        <h2 class="panel2 link-home"><a href="/home" style="color:rgb(255, 200, 0);">Home</a></h2>
+        <ul>
+            <% console.log('username from ejs: ', locals.username); %>
+            <% if (locals.username) { %>
+                <li><a href="/users/logout" class="link panel2" style="color:rgb(137, 137, 137);">Log out</a></li>
+                <div class="panel " style="border-radius: 50px;">
+                    <!-- <div class="" style="font-size: 0.9em;">Active user: </div> -->
+                    <div class="" style="border-radius: 50px; color:rgb(24, 209, 55); font-weight: 500;"><%= locals.username %></div>
+                </div>
+            <% } else { %>
+                <li><a href="/users/login"    class="link">Log in  </a></li>
+                <li><a href="/users/register" class="btn" >Register</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</menu>

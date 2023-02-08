@@ -1,0 +1,62 @@
+.panel {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    /* border-radius: 5px; */
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 2px 4px 7px 3px rgba(0, 0, 0, 0.5); */
+    /* box-shadow: 2px 4px 7px 3px rgba(100, calc((100*200)/255), 0, 0.9); */
+}
+.panel2 {
+    padding: 2px 7px 2px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1.);
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px -4px rgba(0, 0, 0, 0.9);
+}
+
+
+.btn {
+    color:white;
+    background: #4286eb;
+    transition: 100ms linear; 
+}
+.btn:hover {
+    color:white;
+    background: #4286eb;
+    transition: 100ms linear; 
+}
+
+.link-home { color:#797979; margin-bottom: 4px; }
+.link { color:#156cf0; }
+
+.error {
+    color: #ff0099;
+    margin: 10px 2px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * For debuging */
+
+ .panel-blue, .panel-red, .panel-yellow, .panel-orange, .panel-magenta, .panel-grey, .panel-green {
+    /* margin: 5px; */
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.panel-blue { background-color: rgb(0, 179, 255); }
+.panel-red { background-color: rgb(206, 22, 22); }
+.panel-yellow { background-color: rgb(255, 251, 0); }
+.panel-orange { background-color: rgb(255, 200, 0); }
+.panel-magenta { background-color: rgb(213, 26, 226); }
+.panel-green { background-color: rgb(57, 223, 24); }
+.panel-grey  { background-color: rgb(94, 94, 94); } 

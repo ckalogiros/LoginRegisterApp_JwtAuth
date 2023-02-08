@@ -1,0 +1,78 @@
+<title>Registration</title>
+
+<div class="row mt-5">
+    <%- //include('functions/flashMessages'); %> 
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3"> <i class="fas fa-user-plus "></i> Registration </h1>
+            <form action="/users/register" method="POST">
+                <% if(locals.messages.error.email.anyExists){ %>
+                    <div class="alert alert-danger alert-dismissible" role="alert"> <h4>Email-Username:</h4>
+                        <% console.log('messages.error.email.length = ', locals.messages.error.email.msg.length) %>
+                        <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
+                            <%- locals.messages.error.email.msg[i] %>
+                            <% } %> 
+                    </div>
+                <% } else if(locals.messages.success.email !== ''){ %> 
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                    <%- locals.messages.success.email %>
+                    </div>
+                <% } %> 
+                <% if(locals.messages.error.password.anyExists){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                        <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
+                            <%- locals.messages.error.password.msg[i] %>
+                        <% } %> 
+                    </div>
+                <% } else  if(locals.messages.success.password !== ''){ %> 
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                    <%- locals.messages.success.password %>
+                    </div>
+                <% } %> 
+                <div class="form-group"> 
+                    <label for="email">Email</label>
+                    <input novalidate="novalidate" type="text" id="email" name="email" class="form-control" placeholder="Enter Email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" class="form-control" placeholder="Enter Password" autocomplete="off"/>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="text" id="password2" name="password2" class="form-control" placeholder="Confirm Password"/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
+                <!-- <button class="btn btn-primary btn-block mt-3">Register 2</button> -->
+            </form>
+            <!-- <button onClick="test()" class="btn btn-primary btn-block mt-3">Register2</button> -->
+            <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // const form = document.querySelector('form');
+    // console.log("HELLO FROM FORM")
+    // form.addEventListener('submit', async (e)=>{
+    //     e.preventDefault();
+    //     // Get user's input values
+    //     const email = form.email.value; // Accessing email key by the <input>:name="" field
+    //     const password = form.password.value; // Accessing password key by the <input>:name="" field
+    //     const password2 = form.password2.value;
+    
+    //     try{
+    //         const result = await fetch('/users/register', {
+    //             method: 'POST',
+    //             headers: {'Content-Type': 'application/json'},
+    //             body: JSON.stringify({email, password, password2}),
+    //         });
+
+    //     }catch(err){
+    //         console.log("ERROR at submiting the register form. err:", err)
+    //     }
+    //     window.location.reload(false); 
+    // });
+
+</script>
+
+

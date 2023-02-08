@@ -1,0 +1,31 @@
+JWT: Json Web Tokens
+
+consists of three parts
+
+Headers: 
+    Tells the server what type of signature is being used
+    {
+        "alg": "HS256",
+        "typ": "JWT"
+    }
+
+Payload:
+    Used to identify the user (e.x. contains user id, NO sensitive data must be included)
+    {
+        "sub": "1234567890",
+        "name": "John Doe",
+        "iat": 1516239022
+    }
+
+Signature:
+    Makes the token secure(hashes the header and payload to create a signature
+        and uses secret key in server side that is the key to verify 
+        the token and therefore the authenticity of the user)
+    HMACSHA256(
+        base64UrlEncode(header) + "." +
+        base64UrlEncode(payload),
+    ) secret base64 encoded
+
+
+The JWT token is stored to the front end as a cookie 
+and is passed to the server on every GET request. 
