@@ -1,6 +1,15 @@
 <title>Reset Password</title>
+<% console.log('locals.resetPwdUserId: ', locals.resetPwdUserId); %>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
+        <% if(locals.messages.error.password.anyExists){ %>
+            <div class="alert alert-danger alert-dismissible fade show fs-0_8" role="alert"> 
+                <!-- <h4>Password:</h4> -->
+                <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
+                    <%- locals.messages.error.password.msg[i] %>
+                <% } %> 
+            </div>
+        <% } %> 
         <div class="card card-body">
             <h1 class="text-center mb-3"> <i class="fas fa-user-plus "></i>Reset Password</h1>
             <form action="/users/auth/resetPwd" method="POST">
@@ -11,6 +20,9 @@
                 <div class="form-group">
                     <label for="password2">Confirm Password</label>
                     <input type="text" id="password2" name="password2" class="form-control" placeholder="Confirm new Password"/>
+                </div>
+                <div">
+                    <input name="userid" style="display:none; visibility: hidden;" value="<%- locals.resetPwdUserId %>"/>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
             </form>

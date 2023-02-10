@@ -7,9 +7,7 @@ import ejs from 'ejs';
 import Mongoose from 'mongoose';
 import CookieParser from 'cookie-parser';
 import {router} from './routes/Routes.js';
-import {routerHome} from './routes/home.js';
-import { Authorize, ValidateTokenMiddleware } from './Authorization.js';
-
+import { Authorize } from './Authorization.js';
 
 
 
@@ -30,24 +28,17 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 /* Routes */
-app.get('*', ValidateTokenMiddleware);
-app.use('/', routerHome)    // Home page
-app.use('/users', router);  // Login and Sign up pages
-app.get('/auth/authorizedPage', Authorize, (req, res)=>{res.render('authorizedPage')});
-
-// app.use('/tests', router);
+// app.get('*', ValidateTokenMiddleware);
+// app.use('/', routerHome)    // Home page
+// app.use('/users', router);  // Login and Sign up pages
+app.use('/', router);  // Login and Sign up pages
+// app.get('/auth/authorizedPage', Authorize, (req, res)=>{res.render('authorizedPage')});
 
 
 Mongoose.set('strictQuery', true);
 Mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 
 
-// Debug-Print some info for every request
-// app.use((req, res, next) => {
-//     next();
-// });
-
-
-var port = process.env.PORT;
+var port = process.env.PORT || 5556;
 app.listen(port, () => console.log(`Node server listening on port ${port}!`));
 

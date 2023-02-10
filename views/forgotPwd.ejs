@@ -1,10 +1,21 @@
 <title>Forgot Password</title>
-<h2 class="text-center mt-5">Login-Registation App</h2>
+<h2 class="text-center mt-5">Reset your password</h2>
 <br>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
+        <% if(locals.messages.error.email.anyExists){ %>
+            <div class="alert alert-danger alert-dismissible fs-0_7" role="alert"> <h5>Email-Username:</h5>
+                <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
+                    <li class="ml-14"><%- locals.messages.error.email.msg[i] %></li>
+                <% } %> 
+            </div>
+        <% } else if(locals.messages.success.email !== ''){ %> 
+            <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
+                <%- locals.messages.success.email %>
+            </div>
+        <% } %> 
         <div class="card card-body">
-            <h1 class="mb-3  text-center"><i class="fas fa-sign-in-alt"></i>Send an email</h1>
+            <h4 class="mb-3  text-center pt-5"><i class="fas fa-sign-in-alt"></i>Please enter your email address to recieve further instructions</h4>
             <form action="/users/forgotPwd" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>

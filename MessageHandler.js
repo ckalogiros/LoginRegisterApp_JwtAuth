@@ -1,5 +1,8 @@
 import { MESSAGES } from "./Constants.js";
 
+let authError = '';
+export function SetAuthError(msg){authError = msg;}
+export function GetAuthError(){return authError;}
 
 export function MessagesCreate() {
     const messages = {

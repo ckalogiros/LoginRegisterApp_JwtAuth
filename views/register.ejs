@@ -6,27 +6,27 @@
         <div class="card card-body">
             <h1 class="text-center mb-3"> <i class="fas fa-user-plus "></i> Registration </h1>
             <form action="/users/register" method="POST">
+                <% console.log('messages.error: ', locals.messages.error) %>
                 <% if(locals.messages.error.email.anyExists){ %>
-                    <div class="alert alert-danger alert-dismissible" role="alert"> <h4>Email-Username:</h4>
-                        <% console.log('messages.error.email.length = ', locals.messages.error.email.msg.length) %>
+                    <div class="alert alert-danger alert-dismissible fs-0_7" role="alert"> <h5>Email-Username:</h5>
                         <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
-                            <%- locals.messages.error.email.msg[i] %>
-                            <% } %> 
+                            <li class="ml-14"><%- locals.messages.error.email.msg[i] %></li>
+                        <% } %> 
                     </div>
                 <% } else if(locals.messages.success.email !== ''){ %> 
-                    <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4>
-                    <%- locals.messages.success.email %>
+                    <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
+                        <%- locals.messages.success.email %>
                     </div>
                 <% } %> 
                 <% if(locals.messages.error.password.anyExists){ %>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                    <div class="alert alert-danger alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
                         <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
-                            <%- locals.messages.error.password.msg[i] %>
+                            <li class="ml-14"><%- locals.messages.error.password.msg[i] %></li>
                         <% } %> 
                     </div>
                 <% } else  if(locals.messages.success.password !== ''){ %> 
-                    <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4>
-                    <%- locals.messages.success.password %>
+                    <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
+                        <%- locals.messages.success.password %>
                     </div>
                 <% } %> 
                 <div class="form-group"> 

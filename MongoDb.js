@@ -15,35 +15,6 @@ const { Schema, model } = Mongoose;
  */
 
 // Create a scema. The object schema will reflect the stucture of the document in the database
-// const userRegistrationScheme = new Schema({
-//     email: {
-//         type: String,
-//         required: [true, (ERROR_CODE.EMAIL & ERROR_CODE.EMPTY).toString()], // second elem is the error message if 'required:true' fails
-//         unique: [true, (ERROR_CODE.EMAIL | ERROR_CODE.UNIQUE).toString()], // second elem is the error message if 'required:true' fails
-//         validate: [IsEmail, (ERROR_CODE.EMAIL | ERROR_CODE.NOT_VALID).toString()], // First elem validates the user email string input, if fails, the second elem is the error message
-//     },
-//     password: {
-//         type: String,
-//         required: [true, (ERROR_CODE.PWD | ERROR_CODE.EMPTY).toString()],
-//         minlength: [PASSWORD_MIN_LENGTH, (ERROR_CODE.PWD | ERROR_CODE.LEN).toString()], // second elem is the error message
-//     },
-//     // password: {
-//     //     type: String,
-//     //     minlength: 6,
-//     //     maxlength: 1000,
-//     //     validate: {
-//     //         validator: function (el) {
-//     //             return el.toLowerCase() !== "password"
-//     //         },
-//     //         message: 'The password should not contain the keyword "password"!'
-//     //     }
-//     // },
-//     date: {
-//         type: Date,
-//         default: Date.now
-//     }
-// });
-// Create a scema. The object schema will reflect the stucture of the document in the database
 const userRegistrationScheme = new Schema({
     email: {
         type: String,
@@ -72,10 +43,6 @@ export async function CreateUser(user, callback) {
 
 export async function FindUser(query, callback) {
     const found = await UserModel.findOne(query, callback);
-    console.log('\n\n--------------------------------------------------------------------')
-    if(found) console.log('User Found:', found)
-    else console.log('User NOT Found:', query)
-    console.log('\n\n')
     return found;
 }
 export function DeleteUser(query) {

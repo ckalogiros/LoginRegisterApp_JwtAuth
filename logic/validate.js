@@ -8,6 +8,7 @@ export function IsEmail(email){
     }
     return true;
 }
+//
 
 export  function ValidateRegistration(email, password, password2) {
 
@@ -16,7 +17,7 @@ export  function ValidateRegistration(email, password, password2) {
         messages.error.email.msg.push('Required<br/>');
         messages.error.email.anyExists = true;
     }
-    if (!IsEmail(email)) {
+    else if (!IsEmail(email)) {
         messages.error.email.msg.push('Invalid email<br/>');
         messages.error.email.anyExists = true;
     }
@@ -39,23 +40,53 @@ export  function ValidateRegistration(email, password, password2) {
     return messages;
 }
 
-export function ValidateLogin(username, password, databaseUsername, databasePassword) {
-    const messages = CreateMessagesBuffer();
-    if (username === '') {
-        messages.error.msg.push('Invalid Username');
-        messages.error.anyExists = true;
-    }
-    else if (username !== databaseUsername) {
-        messages.error.msg.push('Incorrect Username');
-        messages.error.anyExists = true;
-    }
+// export function ValidateLogin(username, password, databaseUsername, databasePassword) {
+//     const messages = MessagesCreate();
+//     if (username === '') {
+//         messages.error.msg.push('Invalid Username');
+//         messages.error.anyExists = true;
+//     }
+//     else if (username !== databaseUsername) {
+//         messages.error.msg.push('Incorrect Username');
+//         messages.error.anyExists = true;
+//     }
+//     if (password === '') {
+//         messages.error.msg.push('Invalid Password');
+//         messages.error.anyExists = true;
+//     }
+//     else if (password !== databasePassword) {
+//         messages.error.msg.push('Incorrect Password');
+//         messages.error.anyExists = true;
+//     }
+
+//     return messages;
+// }
+export function ValidatePassword(password, password2) {
+    const messages = MessagesCreate();
     if (password === '') {
-        messages.error.msg.push('Invalid Password');
-        messages.error.anyExists = true;
+        messages.error.password.msg.push('Password required');
+        messages.error.password.anyExists = true;
     }
-    else if (password !== databasePassword) {
-        messages.error.msg.push('Incorrect Password');
-        messages.error.anyExists = true;
+    else if (password2 === '') {
+        messages.error.password.msg.push('Confirmation password required');
+        messages.error.password.anyExists = true;
+    }
+    else if (password !== password2) {
+        messages.error.password.msg.push('Passwords don\'t match');
+        messages.error.password.anyExists = true;
+    }
+
+    return messages;
+}
+export function ValidateMail(email) {
+    const messages = MessagesCreate();
+    if (email === '') {
+        messages.error.email.msg.push('Required<br/>');
+        messages.error.email.anyExists = true;
+    }
+    else if (!IsEmail(email)) {
+        messages.error.email.msg.push('Invalid email<br/>');
+        messages.error.email.anyExists = true;
     }
 
     return messages;

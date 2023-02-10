@@ -18,6 +18,14 @@
     box-shadow: 0px 4px 4px -4px rgba(0, 0, 0, 0.9);
 }
 
+.card{
+    padding: 2px 7px 2px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1.);
+    align-items: center;
+    justify-content: center;
+
+}
 
 .btn {
     color:white;
@@ -30,7 +38,9 @@
     transition: 100ms linear; 
 }
 
-.link-home { color:#797979; margin-bottom: 4px; }
+.link-home { 
+    color:rgb(255, 200, 0);
+}
 .link { color:#156cf0; }
 
 .error {
