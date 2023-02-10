@@ -1,0 +1,66 @@
+<title>Registration Success</title>
+
+<!-- <h2 class="text-center mt-5">Login-Registation App</h2> -->
+<br>
+<div class="row mt-5">
+    <!-- <div class="panel col-md-6 m-auto text-center  bord1 rad10 pr5 pl5 pb10 pt10"> -->
+    <div class="panel col-md-6 m-auto text-center">
+        <h3><i class="fab fa-node-js fa-3x color-green ">Your Registration was successfull!</i></h3>
+        <br>
+        <p class="color-green">Login to continue.</p>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <form action="/users/login" method="POST">
+                <% if(locals.user) { %>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input value="<%- locals.user.email%>" type="text" id="email" name="email" class="form-control" placeholder="Enter email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input value="<%- locals.user.password; %>" type="text" id="password" name="password" class="form-control" placeholder="Enter password" />
+                    </div>
+                <% } else { %>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="Enter email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" id="password" name="password" class="form-control" placeholder="Enter password" />
+                    </div>
+                <% } %>
+                <% if(locals.messages.error.email.anyExists){ %>
+                    <!-- <div class="alert alert-danger alert-dismissible" role="alert"> <h4>Email-Username:</h4> -->
+                    <div style="color: rgb(255, 0, 0);">
+                        <% console.log('messages.error.email.length = ', locals.messages.error.email.msg.length) %>
+                        <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
+                            <%- locals.messages.error.email.msg[i] %>
+                        <% } %> 
+                    </div>
+                <% } else if(locals.messages.success.email !== ''){ %> 
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                    <%- locals.messages.success.email %>
+                    </div>
+                <% } %> 
+                <% if(locals.messages.error.password.anyExists){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert"> <h4>Password:</h4>
+                        <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
+                            <%- locals.messages.error.password.msg[i] %>
+                        <% } %> 
+                    </div>
+                <% } else  if(locals.messages.success.password !== ''){ %> 
+                    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> <h4>Password:</h4> -->
+                    <div style="color: rgb(255, 0, 0);" class="pt-5 border-top-0">
+                        <%- locals.messages.success.password %>
+                    </div>
+                <% } %> 
+                <button type="submit" class="btn margt-1em">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

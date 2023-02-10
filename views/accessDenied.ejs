@@ -1,0 +1,20 @@
+<title>Authorization Failure</title>
+
+<!-- <h2 class="text-center mt-5">Login-Registation App</h2> -->
+<div class="row mt-5">
+    <!-- <div class="panel col-md-6 m-auto text-center  bord1 rad10 pr5 pl5 pb10 pt10"> -->
+    <div class="panel col-md-6 m-auto text-center">
+        <div class="alert alert-danger alert-dismissible fade show  fs-0_7" role="alert"> 
+            <h4>Oops, Something went wrong!</h4> 
+            <br>
+            <h1>Access Denied</h1> 
+            <% console.log('AuthError:', locals.authError);%>
+            <br>
+            Error message:
+            <%- locals.authError; %>
+            <% //if(locals.authError) {%>
+                <%- //locals.authError; %>
+            <% //} %>
+        </div>
+    </div>
+</div>
