@@ -1,28 +1,28 @@
 <title>Forgot Password</title>
-<h2 class="text-center mt-5">Reset your password</h2>
-<br>
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <% if(locals.messages.error.email.anyExists){ %>
-            <div class="alert alert-danger alert-dismissible fs-0_7" role="alert"> <h5>Email-Username:</h5>
-                <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
-                    <li class="ml-14"><%- locals.messages.error.email.msg[i] %></li>
-                <% } %> 
-            </div>
-        <% } else if(locals.messages.success.email !== ''){ %> 
-            <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
-                <%- locals.messages.success.email %>
-            </div>
-        <% } %> 
-        <div class="card card-body">
-            <h4 class="mb-3  text-center pt-5"><i class="fas fa-sign-in-alt"></i>Please enter your email address to recieve further instructions</h4>
-            <form action="/users/forgotPwd" method="POST">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" class="form-control" placeholder="Enter email" />
-                </div>
-                <button type="submit" class="btn   mt-3">Submit</button>
-            </form>
-        </div>
-    </div>
+<div class="section ptb2rem">
+  <h2 class="text-center mb1rem">Reset your password</h2>
+
+  <% if(locals.messages.error.email.anyExists){ %>
+  <div class="fontsize-medium mt10 pt10">
+    <h5>Email-Username:</h5>
+    <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
+    <li class=""><%- locals.messages.error.email.msg[i] %></li>
+    <% } %>
+  </div>
+  <% } else if(locals.messages.success.email !== ''){ %>
+  <div class="fontsize-medium mt10 pt10">
+    <h5>Password:</h5>
+    <%- locals.messages.success.email %>
+  </div>
+  <% } %>
+  <div class="col g-marglrrem g-padlrrem">
+    <i><h5 class="text-center info mb1rem">Please enter your email address <br /> to recieve further instructions</h5></i>
+    <form class="form g-marglrrem mt1rem" action="/users/forgotPwd" method="POST">
+      <div class="overflowHidden">
+        <label for="email">Email</label>
+        <input class="" type="text" id="email" name="email" placeholder="Enter email" />
+        <button class="btn mt2rem mb1rem" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>

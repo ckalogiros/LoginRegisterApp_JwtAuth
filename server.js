@@ -7,7 +7,7 @@ import ejs from 'ejs';
 import Mongoose from 'mongoose';
 import CookieParser from 'cookie-parser';
 import {router} from './routes/Routes.js';
-import { Authorize } from './Authorization.js';
+import { Authorize } from './authorization.js';
 
 
 
@@ -28,13 +28,11 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 /* Routes */
-// app.get('*', ValidateTokenMiddleware);
-// app.use('/', routerHome)    // Home page
-// app.use('/users', router);  // Login and Sign up pages
 app.use('/', router);  // Login and Sign up pages
 // app.get('/auth/authorizedPage', Authorize, (req, res)=>{res.render('authorizedPage')});
 
 
+// Database
 Mongoose.set('strictQuery', true);
 Mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 

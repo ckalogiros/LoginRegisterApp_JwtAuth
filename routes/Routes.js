@@ -1,6 +1,6 @@
 import * as auth from '../routeControllers/routeController.js'
 import Express from 'express'
-import { Authorize } from '../Authorization.js';
+import { Authorize } from '../authorization.js';
 
 
 export const router = Express.Router();
@@ -27,7 +27,7 @@ router.post('/users/auth/resetPwd', Authorize, auth.ResetPwdPost);
 router.get('/auth/authorizedPage', auth.AuthPageGet);
 
 /* Success Pages */
-router.get('/success', (req, res)=>{
+router.get('/success', (req, res) => {
     res.render('emailSentSuccess');
 });
 router.get('/users/registrationSuccess', auth.RegistrationSuccessGet);
@@ -39,3 +39,11 @@ router.get('/accessDenied', auth.accessDeniedGet);
 
 
 // router.get('*', ValidateTokenMiddleware);
+
+
+// import RefreshDatabase from 'MongoDb';
+import {RefreshDatabase} from '../database.js';
+router.get('/users/refreshDatabase', (req, res)=>{
+    RefreshDatabase();
+    res.render('home')
+});

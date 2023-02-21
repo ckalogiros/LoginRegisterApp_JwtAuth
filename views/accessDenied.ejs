@@ -1,20 +1,30 @@
 <title>Authorization Failure</title>
 
-<!-- <h2 class="text-center mt-5">Login-Registation App</h2> -->
-<div class="row mt-5">
-    <!-- <div class="panel col-md-6 m-auto text-center  bord1 rad10 pr5 pl5 pb10 pt10"> -->
-    <div class="panel col-md-6 m-auto text-center">
-        <div class="alert alert-danger alert-dismissible fade show  fs-0_7" role="alert"> 
-            <h4>Oops, Something went wrong!</h4> 
+<style>
+    .denied{
+        padding: 2rem;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        border: rgba(201, 28, 28, 0.5) 1px solid;
+        box-shadow: inset 0 0 40px 5px rgb(227, 15, 15);
+    }
+</style>
+
+<div class="denied ">
+    <div class="shadow border panel-red color-white m1rem p20 text-center overflowHidden">
+            <h4 class="mt1rem">Oops, Something went wrong!</h4> 
             <br>
-            <h1>Access Denied</h1> 
+            <h1 class="textShadow">Access Denied</h1> 
             <% console.log('AuthError:', locals.authError);%>
             <br>
-            Error message:
-            <%- locals.authError; %>
-            <% //if(locals.authError) {%>
-                <%- //locals.authError; %>
-            <% //} %>
-        </div>
+            <div class="mb2rem p1rem fontsize089rem">
+                Error message:
+                <%- locals.authError; %>
+                <% //if(locals.authError) {%>
+                    <%- //locals.authError; %>
+                    <% //} %>
+            </div>
+        <!-- </div> -->
     </div>
 </div>

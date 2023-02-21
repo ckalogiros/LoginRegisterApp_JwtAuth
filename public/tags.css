@@ -1,87 +1,67 @@
-/* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
-/* html { */
-    /* margin: 2px; */
-    /* border: #000000 2px solid; */
-/* } */
 body {
     display: grid;
+
     /* Sets all rows, but the content of the page to occupy the height of their content */
     grid-template-rows: auto auto 1fr auto;
-    gap: 2px;
-    
-    grid-template-areas: 
-    "head head head" 
-    "men men men" 
-    "cont cont cont" 
-    "foot foot foot";
-    
-    min-height:100vh;
-    
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    font-family: 'Quicksand', sans-serif;
-    background: #ffffff;
-    color: #2f2f2f;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "men"
+        "sep"
+        "cont"
+        "foot";
+    min-height: 100vh;
 }
 
-header{
-    /* margin: 2px;
-    border: #000000 2px solid; */
+header {
     grid-area: head;
     align-self: start;
 }
 
 menu {
-    /* margin: 2px; */
-    /* border: #ff9500 2px solid; */
     grid-area: men;
     align-self: start;
-    border-bottom: rgb(255, 200, 0) 4px solid;
-    padding: 4px 0 8px;
+    /* border-bottom: hsl(var(--themeBorder)) 4px solid; */
+
 }
 
 content {
-    /* margin: 2px;
-    border: #b318a9 2px solid; */
-    
     grid-area: cont;
-
-    /* align-self: center; */
-    /* justify-self: center; */
-    /* align-items: center;
-    justify-items: center; */
-
-    /* margin-top: 120px; */
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    background: #fafafa;
-    font-family: 'Quicksand', sans-serif;
-    color: #2f2f2f;
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    justify-self: center;
 }
 
 footer {
-    /* margin: 2px;
-    border: #258015 2px solid; */
-    
     grid-area: foot;
-    
     text-align: center;
     align-self: end;
     color: #8f8f8f;
     font-size: 0.8em;
-    padding: 10px;
-    margin: 10px;
+    box-shadow: 0 -2px 6px -6px hsl(var(--themeShadow)/.3);
 }
 
 
+menuSep {
+    grid-area: sep;
+    width: 100vw;
+    height: 0.3rem;
+    background: var(--gradientAwesome);
+}
+
+menuSepBlur{
+    position: absolute;
+    /* left: 0; */
+    width: 100vw;
+    height: 0.6rem;
+    background: var(--gradientAwesome);
+    opacity: 0.5;
+    filter: blur(12px);
+  }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* margin-bottom: 120px; */
 }
 
 nav ul {
@@ -89,69 +69,71 @@ nav ul {
     align-items: center;
 }
 
-nav li {
-    margin-left: 20px;
-    /* font-size: 0.8em; */
-}
-
 nav li a {
     text-transform: uppercase;
-    font-weight: 700;
-    display: block;
-    /* padding: 10px 16px; */
-    letter-spacing: 2px;
+    /* display: block; */
 }
 
 a {
-    /* font-size: 1em; */
-    transition: 100ms linear; 
-    opacity: 0.8;
+    color: inherit;
+    transition: 100ms linear;
 }
 
-a:hover, a:focus {
-    /* font-size: 1em; */
-    opacity: 1.0;
-    transition: 100ms linear; 
+a:hover,
+a:focus {
+    opacity: .8;
+    box-shadow: 0px 3px 3px -3px hsl(var(--themeShadow)/.3);
+    transition: 200ms linear;
 }
 
 form h2 {
     font-size: 2.4em;
     font-weight: 900;
-    margin-bottom: 40px;
 }
 
 form {
-    /* width: 360px; */
-    width: 350px;
     margin: 0 auto;
-    padding: 30px;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background: white;
+    padding: 10px;
 }
 
 input {
-    padding: 10px 12px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    font-size: 1em;
+    padding: 0.5rem 0px 0.5rem;
+    padding-left: .5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width:93%;
+}
+
+input[type=text] {
     width: 100%;
+    /* padding: 12px 20px; */
+    /* margin: 8px 0; */
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    /* -webkit-transition: 0.5s;
+    transition: 0.5s; */
+    outline: none;
+}
+input[type=text]:focus {
+    transition: 0.2s;
+    box-shadow: 0 0 5px 2px hsl(var(--clr-blue));
+}
+input[type=text]:focus-within {
+    background-color: none;
 }
 
 label {
     display: block;
-    margin: 20px 0 10px;
     padding: 0 8px 0;
+    width: 100%;
 }
 
 button {
-    /* margin-top: 30px; */
     border-radius: 8px;
-    /* background: #FEE996; */
     border: 0;
     text-transform: uppercase;
+    font-family: var(--font-fam-quicksand);
     font-weight: 700;
-    font-size: 0.8em;
     display: block;
     padding: 10px 16px;
     letter-spacing: 2px;

@@ -31,6 +31,13 @@ const userRegistrationScheme = new Schema({
 
 export const UserModel = model('User', userRegistrationScheme);
 
+// Reset the database by deleting all entries
+export async function RefreshDatabase() {
+    await UserModel.deleteMany({});
+}
+// RefreshDatabase(UserModel);
+
+
 export async function CreateUser(user, callback) {
     try {
         const result = await user.save();

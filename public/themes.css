@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&wght@400&wght@500&wght@600&wght@700&wght@800&wght@900&display=swap');
+
+
+:root {
+   /* colors in HSL*/
+   --clr-black: 0 0% 0%;
+   --clr-dark: 0 0% 15%;
+   --clr-dark-midtone: 0 0% 25%;
+   
+   --clr-white: 0 0% 100%;
+   --clr-light: 0 0% 90%;
+   --clr-light-midtone: 0 0% 85%;
+   
+   --clr-blue: 209 96% 54%;
+
+   --clr-dark-accent: 0 0% 18%;
+   --clr-dark-strong: 0 0% 10%;
+   --clr-light-accent: 0 0% 95%;
+   --clr-light-strong: 0 0% 98%;
+
+   --themeClr1: var(--clr-blue);
+   --themePicker: var(--clr-blue);
+
+   --box-shadow: 0 0.3em 0.6em rgba(0, 0, 0, .6);
+   --shadow: var(--clr-black);
+
+   --gradientAwesome:linear-gradient(-90deg, rgb(0, 255, 255), rgb(255, 0, 208));
+
+   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    * Fonts */
+   --font-fam-poppins: 'Poppins', 'sans-serif';
+   --font-fam-quicksand: 'Quicksand', 'sans-serif';
+   font-family: var(--font-fam-poppins);
+   /* font-family: var(--font-fam-quicksand); */
+
+   --font-weight: 500;
+   font-weight: var(--font-weight);
+   --fontsize-medium: calc(var(--fontsize) * .8);
+
+   --fontsize: 18px;
+   font-size: var(--fontsize);
+   letter-spacing: 1px;
+
+   /* font sizes */
+   --fs-900: 9.375rem;
+   --fs-800: 6.25rem;
+   --fs-700: 3.5rem;
+   --fs-600: 2rem;
+   --fs-500: 1.75rem;
+   --fs-400: 1.125rem;
+   --fs-300: 1rem;
+   --fs-200: 0.875rem;
+   --fs-100: 0.6rem;
+
+   /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+   /* margin */
+   --margrem: 1rem;
+   --padrem: 1rem;
+
+   /* Form max-width */
+   --formMaxWidth: 15rem;
+
+   /* Icons */
+   /* --iconTheme: --clr-black; */
+   --iconTheme: var(--clr-black);
+}
+
+.iconTheme {
+   color: hsl(var(--themeText));
+}
+.themePicker {
+   position: relative;
+   display: inline-block;
+   visibility: visible;
+   box-shadow: 0 0.3em 0.6em hsl(var(--themeShadow)/.3);
+   /* border-radius: 50%; */
+   border-radius: 5px;
+   padding: 3px;
+   /* font-size: 3rem; */
+   /* display: flex; */
+}
+.themePickerMode {
+   display: flex;
+   flex-direction: column;
+   border: 0;
+   visibility: hidden;
+   position: absolute;
+   z-index: 2;
+   top: 126%;
+   right: -100%;
+   background-color: hsl(var(--themeBk));
+   color: hsl(var(themeText));
+   box-shadow: 1px 1px 4px 0px hsl(var(--shadow)/.3);
+   justify-content: center;
+   align-items: start;
+   text-align: start;
+   padding: 1rem 1rem;
+   /* margin-inline: auto; */
+   border-radius: 0 0 2rem 2rem;
+   visibility: hidden;
+   opacity: 0;
+   transition: .4s linear;
+}
+.themePicker:hover .themePickerMode {
+   visibility: visible;
+   transition: .2s linear;
+   opacity: 1;
+}
+.themePickerMode input[type='radio'] {
+   appearance: none;
+   width: 1.5rem;
+   height: 1.5rem;
+   outline: 5px solid hsl(var(--themePicker));
+   outline-offset: 3px;
+   border-radius: 50%;
+}
+.themePickerMode input[type='radio']:checked {
+   background-color: hsl(var(--themePicker));
+}
+.themePickerMode input[type='radio']#darkId {
+   --themePicker: 0 0% 30%;
+}
+.themePickerMode input[type='radio']#lightId {
+   --themePicker: 0 0% 70%;
+}
+.themeModeHover {
+   transition: .3s linear;
+   border-bottom:hsl(var(--themeBorder)/.0) 1px solid;
+}
+.themeModeHover:hover {
+   border-bottom:hsl(var(--themeBorder)/.2) 1px solid;
+   transition: .3s linear;
+}
+
+/* TODO: Does not work with firefox. Implement with js */
+:root:has(#darkId:checked) {
+   --themeBk: var(--clr-dark);
+   --themeBkAccent: var(--clr-dark-accent);
+   --themeText: var(--clr-light);
+   --themeTextStrong: var(--clr-light-strong);
+   --themeBorder: var(--clr-light);
+   --themeShadow: var(--clr-black);
+   --themeShadowNegative: var(--clr-light);
+   --themeMidtone: var(--clr-dark-midtone);
+   --themeLighter: var(--clr-dark-midtone);
+   --themeForm: var(--clr-dark-midtone);
+}
+
+:root:has(#lightId:checked) {
+   --themeBk: var(--clr-light);
+   --themeBkAccent: var(--clr-light-accent);
+   --themeText: var(--clr-dark);
+   --themeTextStrong: var(--clr-dark-strong);
+   --themeBorder: var(--clr-dark);
+   --themeShadow: var(--clr-black);
+   --themeShadowNegative: var(--clr-black);
+   --themeMidtone: var(--clr-light-midtone);
+   --themeLighter: var(--clr-light-accent);
+   --themeForm: var(--clr-light-accent);
+}
+
+/* 
+   Exlanation of the: 'has' pseudo class
+   
+   Select the .card element when it contains a <figure> immediately
+   followed by a paragraph.
+   CSS
+   .card:has(figure + p) {
+      flex-direction: row;
+   }
+
+   the has() function takes a tag as a param
+
+ HTML
+ <article class="card">
+  <figure></figure>
+  <p></p>
+</article>
+
+*/

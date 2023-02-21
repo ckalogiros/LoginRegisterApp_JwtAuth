@@ -1,13 +1,26 @@
 <title>Authorized Page</title>
 
+<style>
+    .access{
+        padding: 2rem;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        border: rgba(28, 201, 28, 0.5) 1px solid;
+        box-shadow: inset 0px 0px 30px 0px rgba(28, 201, 28, 0.5);
+        display: block;
+        /* max-width: 17rem; */
+    }
+</style>
+
 <br>
-<div class="margt-140">
-    <div class="col-md-7 m-auto panel-green color-white">
-        <h1 class="text-center m-5">AUTHORIZED PAGE</h1>
-        <% if (locals.username) { %>
-            <h3 class="text-center m-5">Welcome user <%- '\"' + locals.username + '\"' %></h3>
-        <% } else { %>
-            <h3 class="text-center m-5">ERROR displaying user</h3>
-        <% } %>
-    </div>
+<div class="access">
+  <div class="shadow border panel-green color-white m1rem p20 text-center overflowHidden">
+    <h1 class="textShadow mt2rem g-marglrrem">AUTHORIZED PAGE</h1>
+    <% if (locals.username) { %>
+    <h3 class="text-center mb2rem mt2rem">Welcome user <%- '\"' + locals.username + '\"' %></h3>
+    <% } else { %>
+    <h3 class="">ERROR displaying user</h3>
+    <% } %>
+  </div>
 </div>

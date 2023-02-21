@@ -1,7 +1,7 @@
 import Jwt from "jsonwebtoken";
 import Dotenv from 'dotenv/config';
-import { FindUser, UpdateUser } from "./MongoDb.js";
-import { SetAuthError, GetAuthError } from "./MessageHandler.js";
+import { FindUser, UpdateUser } from "./database.js";
+import { SetAuthError, GetAuthError } from "./messagesHandler.js";
 
 
 export function Authorize(req, res, next) {
@@ -49,22 +49,6 @@ export function VerifyToken(token) {
     return null;
 }
 
-
-// export async function GetUserViaTokenValidation(token) {
-//     if (token) {
-//         const decode = await Jwt.verify(token, process.env.LOGIN_SECRET)
-//         if(decode){
-//             const query = {_id: decode.id}
-//             const user = await FindUser(query, null);
-//             if(user){
-//                 // If user is found, return the email and password only
-//                 return {email:user.email, password:user.password};
-//             }
-//             else return null;
-//         }
-//     }
-//     return null;
-// };
 export async function GetUserViaTokenValidation(token) {
     const decode = VerifyToken(token);
     if (decode) {
@@ -87,7 +71,6 @@ export function  CreatejwtToken(id, expiration){
 
 
 export async function ResetPassword(token, password) {
-
     if (token) {
         const decode = await Jwt.verify(token, process.env.LOGIN_SECRET)
         if(decode){

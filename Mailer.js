@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 import Dotenv from 'dotenv'
-import { FindUser } from './MongoDb.js';
-import { CreatejwtToken } from './Authorization.js';
+import { FindUser } from './database.js';
+import { CreatejwtToken } from './authorization.js';
 import { TIME } from './Constants.js';
 
 

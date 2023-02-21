@@ -1,78 +1,102 @@
 <title>Registration</title>
 
-<div class="row mt-5">
-    <%- //include('functions/flashMessages'); %> 
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3"> <i class="fas fa-user-plus "></i> Registration </h1>
-            <form action="/users/register" method="POST">
-                <% console.log('messages.error: ', locals.messages.error) %>
-                <% if(locals.messages.error.email.anyExists){ %>
-                    <div class="alert alert-danger alert-dismissible fs-0_7" role="alert"> <h5>Email-Username:</h5>
-                        <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
-                            <li class="ml-14"><%- locals.messages.error.email.msg[i] %></li>
-                        <% } %> 
-                    </div>
-                <% } else if(locals.messages.success.email !== ''){ %> 
-                    <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
-                        <%- locals.messages.success.email %>
-                    </div>
-                <% } %> 
-                <% if(locals.messages.error.password.anyExists){ %>
-                    <div class="alert alert-danger alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
-                        <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
-                            <li class="ml-14"><%- locals.messages.error.password.msg[i] %></li>
-                        <% } %> 
-                    </div>
-                <% } else  if(locals.messages.success.password !== ''){ %> 
-                    <div class="alert alert-success alert-dismissible fade show  fs-0_7" role="alert"> <h5>Password:</h5>
-                        <%- locals.messages.success.password %>
-                    </div>
-                <% } %> 
-                <div class="form-group"> 
-                    <label for="email">Email</label>
-                    <input novalidate="novalidate" type="text" id="email" name="email" class="form-control" placeholder="Enter Email" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name="password" class="form-control" placeholder="Enter Password" autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input type="text" id="password2" name="password2" class="form-control" placeholder="Confirm Password"/>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
-                <!-- <button class="btn btn-primary btn-block mt-3">Register 2</button> -->
-            </form>
-            <!-- <button onClick="test()" class="btn btn-primary btn-block mt-3">Register2</button> -->
-            <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
-        </div>
+<div class="col g-marglrrem g-padlrrem">
+  <h1 class="text-center mtb1rem"> <i class=""></i> Registration </h1>
+  <form class="form g-marglrrem" id="registerForm">
+    <div class="mt10 m4 p10 r10 ba overflowHidden">
+      <label for="email">Email</label>
+      <input class="" novalidate="novalidate" type="text" id="email" name="email" value="<%- locals.email; %>" placeholder="Enter Email" />
+      <% if(locals.messages.error.email.anyExists){ %>
+      <% for(var i=0; i<locals.messages.error.email.msg.length; i++) { %>
+      <li class="error ml1rem mt6 text-shadow "><%- locals.messages.error.email.msg[i] %></li>
+      <% } %>
+      <% } else if(locals.messages.success.anyExists) { %>
+      <li class="success ml1rem mt6 text-shadow "><%- locals.messages.success.email %></li>
+      <% } %>
     </div>
+    <div class="mt10 m4 p10 r10 ba overflowHidden">
+      <label for="password">Password</label>
+      <input class="" type="text" id="password" name="password" value="<%- locals.password; %>" placeholder="Enter Password" />
+      <div class="mtb20"></div>
+      <label for="password2">Confirm Password</label>
+      <input class="" type="text" id="password2" name="password2" value="<%- locals.password2; %>" placeholder="Confirm Password" />
+      <% if(locals.messages.error.password.anyExists){ %>
+      <% for(var i=0; i<locals.messages.error.password.msg.length; i++) { %>
+      <li class="error ml1rem mt6 text-shadow "><%- locals.messages.error.password.msg[i] %></li>
+      <% } %>
+      <% } else if(locals.messages.success.anyExists) { %>
+      <li class="success ml1rem mt6 text-shadow "><%- locals.messages.success.password %></li>
+      <% } %>
+    </div>
+    <input class="btn mtb1rem ml6 preventTextSelection" id="submitBtn" type="submit" value="Register" />
+  </form>
+  <p class="belowForm ptb1rem">Have An Account?
+    <a class="link" href="/users/login">Login</a>
+  </p>
 </div>
 
 <script>
-    // const form = document.querySelector('form');
-    // console.log("HELLO FROM FORM")
-    // form.addEventListener('submit', async (e)=>{
-    //     e.preventDefault();
-    //     // Get user's input values
-    //     const email = form.email.value; // Accessing email key by the <input>:name="" field
-    //     const password = form.password.value; // Accessing password key by the <input>:name="" field
-    //     const password2 = form.password2.value;
-    
-    //     try{
-    //         const result = await fetch('/users/register', {
-    //             method: 'POST',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: JSON.stringify({email, password, password2}),
-    //         });
+  console.log("HELLO FROM FORM")
 
-    //     }catch(err){
-    //         console.log("ERROR at submiting the register form. err:", err)
-    //     }
-    //     window.location.reload(false); 
-    // });
+  // const registerForm = document.getElementById('registerForm');
+  // const submitBtn = document.getElementById('submitBtn');
+  // submitBtn.addEventListener("click", async (event) => {
+  //   //   const OnSubmit = async function(e) {
+  //   event.preventDefault();
+  //   // Get user's input values
+  //   const email = registerForm.email.value; // Accessing email key by the <input>:name="" field
+  //   const password = registerForm.password.value; // Accessing password key by the <input>:name="" field
+  //   const password2 = registerForm.password2.value;
+  //   console.log("-------------------------------------\nOnSubmit register form:\n  ", email, password, password2)
 
+  //   // const formData = new FormData(registerForm);
+  //   // console.log("OnSubmit FormData:\n  ", formData)
+
+  //   const result = await fetch('/users/register', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       email,
+  //       password,
+  //       password2
+  //     }),
+  //   });
+
+  //   if(result){
+  //       // registerForm.reset();
+  //       // console.log('Fetch result:', result)
+  //       // window.location.reload(false);
+  //   }
+
+  // });
+
+  //   registerForm.addEventListener('submit', OnSubmit, false);
+  // const registerForm = document.getElementById("registerForm");
+
+  registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("------------------------------------------------------------------------------")
+    registerForm.method = 'post';
+    registerForm.action = '/users/register';
+    registerForm.submit();
+  });
 </script>
 
+<!-- // try {
+    const result = await fetch('/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        password2
+      }),
+    });
 
+  // } catch (err) {
+  //   console.log("ERROR at submiting the register form. err:", err)
+  // } -->

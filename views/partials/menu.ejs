@@ -1,19 +1,118 @@
+<style>
+  .mmm {
+    position: relative;
+  }
+
+  .dropDown {
+    position: relative;
+    background-color: hsl(var(--themeBk));
+    color: hsl(var(--themeText));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3em;
+    cursor: pointer;
+    box-shadow: 0 0.3em 0.6em hsl(var(--themeShadow)/.6);
+  }
+
+  .dropMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 0;
+    width: 100vw;
+    margin-top: 108%;
+    background-color: hsl(var(--themeBk));
+    border-radius: 0.3em;
+    overflow: hidden;
+    transition: .4s height;
+    box-shadow: 0 3px 1.5em 1px hsl(var(--themeShadow)/.4);
+    /* box-shadow: 0 3px 1.5em 1px hsl(var(--shadow)/.4); */
+  }
+
+  .dropMenu .item {
+    position: relative;
+    display: flex;
+    font-size: 0.9em;
+    padding: 0.8em;
+    color: hsl(var(--themeText));
+    opacity:.8;
+    border-bottom: 1px solid rgba(209, 209, 209, .3);
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .dropMenu .item:hover {
+    opacity:1;
+    color: hsl(var(--themeTextStrong));
+    border-bottom: 1px solid rgba(209, 209, 209, .7);
+  }
+
+  .dropMenu.active {
+    height: 7rem;
+  }
+</style>
 <menu class="">
-    <nav>
-        <h2 class="link-home ml-10"><a href="/home" style="color:rgb(255, 200, 0);">Home</a></h2>
-        <ul>
-            <% console.log('Menu:username: ', locals.username); %>
-            <% if (locals.username) { %>
-                <div class="flex">
-                    <!-- <div class="sh1" style="border-radius: 50px; color:rgb(24, 209, 55); font-weight: 500;"><%= //locals.username %></div> -->
-                    <div>User:</div> 
-                    <div class="pl-5" ><%= locals.username %></div>
-                </div>
-                <li><a href="/users/logout" class="mr-10">Log out</a></li>
-            <% } else { %>
-                <li><a href="/users/login"    class="link">Log in  </a></li>
-                <li><a href="/users/register" class="btn mr-10" >Register</a></li>
-            <% } %>
-        </ul>
-    </nav>
+
+  <nav class="preventTextSelection pb6">
+    <h2><a href="/home" class="link-home">Home</a></h2>
+    <ul class="">
+      <div class="themePicker mr2rem">
+        <!-- TODO: iconTheme should work but it doesn't. So we inline with a plai css style -->
+        <span class="matIcons iconTheme" style="color:hsl(var(--themeText))" >settings_brightness</span>
+        <fieldset class="themePickerMode p1rem">Pick Theme
+          <div class='themeModeHover flex row p1rem'>
+            <span class="matIcons "  style="color:hsl(var(--clr-dark-midtone))" >dark_mode</span>
+            <input class="ml1rem" type="radio" name="theme" id="darkId" checked>
+          </div>
+          <div class=' flex row p1rem themeModeHover'>
+            <span class="matIcons"  style="color:hsl(var(--clr-light--midtone))" >light_mode</span>
+            <input class="ml1rem" type="radio" name="theme" id="lightId" >
+          </div>
+        </fieldset>
+      </div>
+
+      <% console.log('------------------ EJS:Menu -----------------'); %>
+      <% console.log('Menu:\n username: ', locals.username); %>
+      <% if (locals.username) { %>
+      <div class="tooltip mr2rem">
+        <span class="matIcons"  style="color:hsl(var(--themeText))" >account_circle</span>
+        <div class="tooltipText p1rem">
+          <div class="nowrap"><span></span> User:<%= //locals.username %>
+            <span class="themeClr1"><%= locals.username %></span>
+          </div>
+          <div class="mt6"></div>
+          <a class="wrapPre " href="#"><span></span> profile</a>
+          <div class="mt6"></div>
+          <a class="wrapPre " href="/users/logout"><span></span> log out</a>
+          <div class="mt6"></div>
+        </div>
+      </div>
+      <% } else { %>
+      <li><a href="/users/login" class="link block wrapPre textShadow mr2rem">Log in</a></li>
+      <li><a href="/users/register" class="link wrapPre textShadow mr2rem">Sign up</a></li>
+      <% } %>
+      <div class="mmm">
+        <div class="dropDown mr1rem">
+          <span class="matIcons"  style="color:hsl(var(--themeText))" >menu</span>
+        </div>
+        <div class="dropMenu ">
+          <a class="item wrapPre" href="/users/login"><span></span> Login</a>
+          <a class="item wrapPre" href="/users/register"><span></span> Sign up</a>
+        </div>
+      </div>
+
+      <script>
+        const dropDown = document.querySelector('.dropDown');
+        const dropMenu = document.querySelector('.dropMenu');
+        dropDown.addEventListener('click', () => {
+          dropMenu.classList.toggle('active');
+        });
+      </script>
+    </ul>
+  </nav>
+  
 </menu>
+<menuSep class="mb2rem">
+  <menuSepBlur class=""></menuSepBlur>
+</menuSep>
